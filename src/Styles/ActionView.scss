@@ -1,0 +1,17 @@
+button {
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #115173;
+    font-size: 1em;
+    font-weight: bolder;
+    background-color: #ffd700;
+    transition: all .5s linear;
+    &:hover {
+        background-color: #115173;
+        color: #ffd700;
+        transition: all .5s linear;
+    }
+}
