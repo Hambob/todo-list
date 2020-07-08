@@ -13,12 +13,12 @@ class App extends React.Component<{}, State> {
   }
   addInput = (e: any) => {
     if(e.keyCode === 13 && e.currentTarget.value) {
-      let {options} = this.state
-      let eventValue = e.currentTarget.value
+      const {options} = this.state
+      const eventValue = e.currentTarget.value
       options.push(eventValue)
       this.setState({options})
-      localStorage.setItem("opts", JSON.stringify(options))
       e.currentTarget.value = ''
+      localStorage.setItem("opts", JSON.stringify(options))
     }
   }
 
@@ -34,25 +34,26 @@ class App extends React.Component<{}, State> {
         options: []
       })
     }
+    localStorage.clear();
   }
 
   deleteOpt = (opt: string) => {
-    this.setState((prevState) => ({
-      options: prevState.options.filter((OPT) => {
-        return opt !== OPT
-      })
-    }))
+    let options = this.state.options.filter((OPT) => {
+      return opt !== OPT
+    });
+    this.setState({ options })
+    localStorage.setItem("opts", JSON.stringify(options))
   }
 
   componentDidMount() {
     try{
-    let json = localStorage.getItem('opts')
-    const options: string[] = json !== null ? JSON.parse(json) : []
-    this.setState({options})
+      const json = localStorage.getItem('opts')
+      const options: string[] = json !== undefined && json !== null && JSON.parse(json)
+      if (!options) throw new Error("There is a problem")
+      this.setState({options})
     } catch(e) {
-      console.log('error')
+      console.log(e)
     }
-
   }
   render() {
     return (

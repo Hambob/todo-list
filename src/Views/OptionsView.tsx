@@ -14,16 +14,16 @@ export type State = {
     //
 }
 
-class View extends React.Component<Props, {}> {
+class OptionsView extends React.Component<Props, {}> {
     render() {
         return (
             <div className="options">
                 {
-                    this.props.options.map((opt,  idx) => <OptionView option={opt} key={idx} deleteOpt={this.props.deleteOpt}/>)
+                    this.props.options.map((option, idx) => <OptionView option={option} key={idx} deleteOpt={this.props.deleteOpt}/> )
                 }
             </div>
         )
     }
 }
 
-export default View;
+export default OptionsView;
