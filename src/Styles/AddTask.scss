@@ -1,6 +1,5 @@
 .addTask {
-    width: 100%;
-    height: 25%;
+    grid-area: input;
     direction: ltr;
     input {
         width: 40%;
@@ -8,12 +7,13 @@
         border: none;
         outline: none;
         border-radius: 5px;
-        border: 3px solid #ffd700;
+        border: 2px solid #ffd700;
+        font-size: 1em;
     }
     button {
         background-color: #115173;
         color: #F8F8F8;
-        border: 3px solid #ffd700;
+        border: 2px solid #ffd700;
         &:hover {
             background-color: #ffd700;
             color: #053f5e;

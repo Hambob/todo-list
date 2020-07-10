@@ -12,11 +12,11 @@ class App extends React.Component<{}, State> {
     options: []
   }
   addInput = (e: any) => {
-    if(e.keyCode === 13 && e.currentTarget.value) {
-      const {options} = this.state
+    if (e.keyCode === 13 && e.currentTarget.value) {
+      const { options } = this.state
       const eventValue = e.currentTarget.value
       options.push(eventValue)
-      this.setState({options})
+      this.setState({ options })
       e.currentTarget.value = ''
       localStorage.setItem("opts", JSON.stringify(options))
     }
@@ -29,7 +29,7 @@ class App extends React.Component<{}, State> {
   }
 
   deleteAllOpts = () => {
-    if(this.state.options.length){
+    if (this.state.options.length) {
       this.setState({
         options: []
       })
@@ -46,12 +46,12 @@ class App extends React.Component<{}, State> {
   }
 
   componentDidMount() {
-    try{
+    try {
       const json = localStorage.getItem('opts')
       const options: string[] = json !== undefined && json !== null && JSON.parse(json)
       if (!options) throw new Error("There is a problem")
-      this.setState({options})
-    } catch(e) {
+      this.setState({ options })
+    } catch (e) {
       console.log(e)
     }
   }
@@ -59,12 +59,14 @@ class App extends React.Component<{}, State> {
     return (
       <React.Fragment>
         <div className="main--container">
-          <h1>TODO List Application</h1>
-          <ActionView handlePick={this.handlePick}/>
+          <header>
+            <h1>TODO List Application</h1>
+            <ActionView handlePick={this.handlePick} />
+          </header>
           <div className="opts--container">
             <h1>Your tasks are : </h1>
-            <OptionsView addInput={this.addInput} options={this.state.options} deleteOpt={this.deleteOpt}/>
-            <AddTask addInput={this.addInput} deleteAllOpts={this.deleteAllOpts}/>
+            <OptionsView addInput={this.addInput} options={this.state.options} deleteOpt={this.deleteOpt} />
+            <AddTask addInput={this.addInput} deleteAllOpts={this.deleteAllOpts} />
           </div>
         </div>
       </React.Fragment>

@@ -1,15 +1,12 @@
 .options {
-    width: 100%;
-    height: 75%;
+    grid-area: options;
     overflow-y: scroll;
     scrollbar-width: none;
     .opts-row {
-        margin: 0 auto;
+        margin: 40px auto;
         width: 70%;
-        line-height: 50px;
-        padding: 0 20px;
+        padding: 15px 20px;
         box-sizing: border-box;
-        height: 50px;
         border-radius: 20px;
         background-color: #022c43;
         overflow: hidden;
