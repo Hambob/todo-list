@@ -8,14 +8,10 @@ export type Props = {
 class View extends React.Component<Props, {}> {
     render() {
         return (
-            <React.Fragment>
-                <div className="opts-row">
-                    <p>#{this.props.option}</p>
-                    <p onClick={(e) => this.props.deleteOpt(this.props.option)}>
-                        <i className="fa fa-times"></i>
-                    </p>
-                </div>
-            </React.Fragment>
+            <div className="opt-row">
+                <div className="task">#{this.props.option}</div>
+                <div className="remove"><i onClick={(e) => this.props.deleteOpt(this.props.option)} className="fa fa-trash"></i></div>
+            </div>
         )
     }
 }

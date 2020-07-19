@@ -1,31 +1,39 @@
 .options {
-    grid-area: options;
     overflow-y: scroll;
     scrollbar-width: none;
-    .opts-row {
-        margin: 40px auto;
-        width: 70%;
-        padding: 15px 20px;
-        box-sizing: border-box;
+    grid-area: options;
+    background-color: #15202b;
+    border-radius: 20px;
+    padding: 5px 10px;
+    .opt-row {
+        width: 100%;
+        height: 10%;
+        background-color: #253341;
         border-radius: 20px;
-        background-color: #022c43;
-        overflow: hidden;
-        margin-bottom: 20px;
-        p{
-            float: left;
-            margin: 0;
-            &:last-of-type {
-                float: right;
-                i{
-                    color: #F8F8F8;
-                    cursor: pointer;
-                    transition: all .5s linear;
-                    &:hover {
-                        color: #ffd700;
-                        font-weight: bolder;
-                        transition: all .2s linear;
-                    }
-                }
+        margin: 10px 0;
+        display: grid;
+        font-size: 1.2vw;
+        grid-template-columns: 70% 30%;
+        grid-template-areas: "Task remove-btn";
+        .task {
+            grid-area: Task;
+            display: flex;
+            flex-direction: column;
+            padding-left: 15px;
+            justify-content: center;
+            color: #F8F8F8;
+        }
+        .remove {
+            grid-area: remove-btn;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: right;
+            padding-right: 20px;
+            i{
+                font-size: 1.5em;
+                cursor: pointer;
+                color:#b32f28;
             }
         }
     }

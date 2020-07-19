@@ -1,13 +1,16 @@
 import React from 'react';
-import ActionView from './Views/ActionView'
-import OptionsView from './Views/OptionsView'
 import './App.scss'
+import OptionsView from './Views/OptionsView'
 import AddTask from './Views/AddTask';
+
+export type Props = {
+  //
+}
 
 export type State = {
   options: string[]
 }
-class App extends React.Component<{}, State> {
+class App extends React.Component<Props, State> {
   state: State = {
     options: []
   }
@@ -20,12 +23,6 @@ class App extends React.Component<{}, State> {
       e.currentTarget.value = ''
       localStorage.setItem("opts", JSON.stringify(options))
     }
-  }
-
-  handlePick = () => {
-    const randomNum = Math.floor(Math.random() * this.state.options.length);
-    const option = this.state.options[randomNum];
-    alert(option);
   }
 
   deleteAllOpts = () => {
@@ -57,19 +54,31 @@ class App extends React.Component<{}, State> {
   }
   render() {
     return (
-      <React.Fragment>
         <div className="main--container">
           <header>
-            <h1>TODO List Application</h1>
-            <ActionView handlePick={this.handlePick} />
+            <h1><i className="fa fa-list">   TODO List Application</i></h1>
           </header>
           <div className="opts--container">
-            <h1>Your tasks are : </h1>
-            <OptionsView addInput={this.addInput} options={this.state.options} deleteOpt={this.deleteOpt} />
-            <AddTask addInput={this.addInput} deleteAllOpts={this.deleteAllOpts} />
+              <div className="top-area">
+                  <div className="top-area__taskName"><h4>#Task:</h4></div>
+                  <div className="top-area__removeAll"><button className={this.state.options.length === 0 ? 'disabled' : ''}  onClick={this.deleteAllOpts}>Remove All</button></div>
+              </div>
+            {
+            this.state.options.length === 0 ? (
+             <div className="empityTasks">
+                There are no tasks
+             </div>
+            ) 
+            : 
+            (
+              <OptionsView options={this.state.options} addInput={this.addInput} deleteOpt={this.deleteOpt}/>
+            )
+            }
+          </div>
+          <div className="input--con">
+              <AddTask addInput={this.addInput}/>
           </div>
         </div>
-      </React.Fragment>
     )
   }
 }

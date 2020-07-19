@@ -19,7 +19,7 @@ class OptionsView extends React.Component<Props, {}> {
         return (
             <div className="options">
                 {
-                    this.props.options.map((option, idx) => <OptionView option={option} key={idx} deleteOpt={this.props.deleteOpt}/> )
+                    this.props.options.map((option, idx) => <OptionView key={idx} deleteOpt={this.props.deleteOpt} option={option}/>)
                 }
             </div>
         )
